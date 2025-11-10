@@ -1,0 +1,512 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables globales con colores de marca */
+:root {
+  --primary-color: #6A994E;
+  --primary-light: #8BC06E;
+  --primary-hover: #5A8440;
+  --secondary-color: #2563EB;
+  --accent-color: #16A34A;
+  --background-dark: #0f172a;
+  --background-light: #1e293b;
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --glow-color: rgba(106, 153, 78, 0.5);
+}
+
+/* Estilos base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+  color: var(--text-primary);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Scrollbar personalizado mejorado */
+.custom-scrollbar::-webkit-scrollbar,
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6A994E 0%, #5A8440 100%);
+  border-radius: 10px;
+  border: 2px solid rgba(15, 23, 42, 0.5);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #8BC06E 0%, #6A994E 100%);
+  box-shadow: 0 0 10px var(--glow-color);
+}
+
+/* Utilidades de animación con efectos futuristas */
+@layer utilities {
+  /* Perspectiva 3D para efecto de volteo de página */
+  .perspective-\[2000px\] {
+    perspective: 2000px;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 20px var(--glow-color);
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-effect-strong {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #8BC06E 0%, #6A994E 50%, #5A8440 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientMove 3s ease infinite;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 5px var(--primary-color),
+                0 0 10px var(--primary-color),
+                0 0 20px var(--primary-color),
+                0 0 40px var(--primary-light);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 5px var(--primary-color),
+                 0 0 10px var(--primary-color),
+                 0 0 20px var(--primary-color),
+                 0 0 30px var(--primary-light);
+  }
+}
+
+@keyframes gradientMove {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 1; filter: brightness(1); }
+  50% { opacity: 0.8; filter: brightness(1.2); }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Componentes reutilizables mejorados */
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-brand to-brand-light hover:from-brand-hover hover:to-brand text-white font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-brand/50 hover:shadow-2xl hover:scale-105 active:scale-95 border border-brand-light/30;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 text-white font-medium rounded-lg transition-all duration-300 border border-gray-500/30;
+  }
+
+  .btn-futuristic {
+    @apply relative px-6 py-3 bg-transparent text-white font-medium rounded-lg transition-all duration-300 overflow-hidden;
+    border: 2px solid var(--primary-color);
+  }
+
+  .btn-futuristic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-futuristic:hover::before {
+    left: 100%;
+  }
+
+  .card {
+    @apply bg-gray-800/40 backdrop-blur-md rounded-xl p-6 shadow-xl border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-2xl hover:shadow-brand/10 hover:scale-[1.02] hover:-translate-y-1 cursor-pointer;
+  }
+
+  .card-futuristic {
+    @apply relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-gray-700/30;
+    background-image: 
+      linear-gradient(135deg, transparent 0%, rgba(106, 153, 78, 0.05) 50%, transparent 100%);
+  }
+}
+
+/* Contenido Markdown mejorado */
+.markdown-content {
+  @apply text-gray-300 leading-relaxed;
+}
+
+.markdown-content h1 {
+  @apply text-2xl sm:text-3xl font-bold text-white mb-4 mt-6 pb-2 border-b-2 border-brand/30;
+}
+
+.markdown-content h2 {
+  @apply text-xl sm:text-2xl font-bold text-white mb-3 mt-5;
+}
+
+.markdown-content h3 {
+  @apply text-lg sm:text-xl font-semibold text-brand-light mb-2 mt-4;
+}
+
+.markdown-content p {
+  @apply mb-4 text-sm sm:text-base;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  @apply ml-4 sm:ml-6 mb-4 space-y-2;
+}
+
+.markdown-content li {
+  @apply text-gray-300 text-sm sm:text-base;
+}
+
+.markdown-content code {
+  @apply bg-gray-900/70 border border-brand/20 px-2 py-1 rounded text-brand-light text-xs sm:text-sm font-mono;
+}
+
+.markdown-content pre {
+  @apply bg-gray-900/80 backdrop-blur-sm border border-gray-700 p-3 sm:p-4 rounded-lg mb-4 overflow-x-auto shadow-lg;
+}
+
+.markdown-content pre code {
+  @apply bg-transparent border-0 px-0 py-0;
+}
+
+.markdown-content table {
+  @apply w-full border-collapse mb-4 rounded-lg overflow-hidden;
+}
+
+.markdown-content thead {
+  @apply bg-gradient-to-r from-gray-800 to-gray-900;
+}
+
+.markdown-content th {
+  @apply px-3 sm:px-4 py-2 sm:py-3 text-left font-semibold text-white border-b border-gray-700;
+}
+
+.markdown-content td {
+  @apply border border-gray-700/50 px-3 sm:px-4 py-2 text-xs sm:text-sm;
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 border-brand bg-green-900/10 backdrop-blur-sm pl-4 pr-4 py-3 my-4 italic text-green-100 rounded-r-lg shadow-lg;
+}
+
+.markdown-content a {
+  @apply text-blue-400 hover:text-blue-300 underline decoration-blue-500/50 hover:decoration-blue-400 transition-all;
+}
+
+/* Canvas 3D optimizado */
+canvas {
+  display: block;
+  outline: none;
+  touch-action: none;
+  user-select: none;
+}
+
+/* Efectos de carga mejorados */
+.loading-spinner {
+  @apply animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+/* Transiciones suaves */
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efectos de hover en botones */
+.icon-button {
+  @apply p-3 rounded-full bg-gray-800/50 backdrop-blur-sm hover:bg-gray-700/70 transition-all duration-300 cursor-pointer hover:scale-110 active:scale-95 border border-gray-700/30 hover:border-gray-600/50;
+}
+
+/* Indicador de página mejorado */
+.page-indicator {
+  @apply text-xs sm:text-sm font-medium text-gray-400 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass-effect hover:glass-effect-strong transition-all;
+}
+
+/* Estilo de selección */
+::selection {
+  background-color: rgba(106, 153, 78, 0.4);
+  color: white;
+}
+
+/* Prevenir arrastre de imágenes */
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Efecto de partículas de fondo */
+.particles-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.1;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .glass-effect {
+    backdrop-filter: blur(12px) saturate(150%);
+  }
+  
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Estilos responsive para el flipbook */
+.flipbook-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mantener proporción de las páginas */
+.stf__item,
+.page {
+  aspect-ratio: 550 / 733;
+}
+
+/* Desktop - mantener tamaño original */
+@media (min-width: 1025px) {
+  .flipbook-responsive {
+    width: 1100px !important; /* 550px × 2 páginas */
+    max-width: 95vw;
+  }
+  
+  .stf__parent {
+    margin: 0 auto;
+  }
+  
+  .stf__item,
+  .page {
+    width: 550px !important;
+    height: 733px !important;
+  }
+}
+
+/* Tablet - tamaño medio */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .flipbook-responsive {
+    width: 900px !important; /* 450px × 2 páginas */
+    max-width: 95vw;
+  }
+  
+  .stf__item,
+  .page {
+    width: 450px !important;
+    height: 600px !important;
+  }
+}
+
+/* Móvil - una sola página + OPTIMIZACIONES */
+@media (max-width: 768px) {
+  /* Desactivar animaciones pesadas en móvil */
+  * {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.2s !important;
+  }
+  
+  /* Reducir efectos visuales costosos */
+  .glass-effect {
+    backdrop-filter: blur(8px) saturate(120%) !important;
+  }
+  
+  /* Simplificar sombras */
+  .shadow-2xl,
+  .shadow-xl,
+  .shadow-lg {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .flipbook-responsive {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+  }
+  
+  .stf__item,
+  .page {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+  }
+  
+  /* Forzar vista de una página en móvil */
+  .demo-book,
+  .stf__wrapper {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  
+  .stf__item {
+    width: 100% !important;
+  }
+  
+  /* Ajustar controles en móvil */
+  .icon-button {
+    padding: 0.5rem !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    backdrop-filter: blur(4px) !important;
+  }
+  
+  /* Mejorar área táctil */
+  button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  /* Ocultar elementos decorativos en móvil */
+  .particles-bg,
+  .background-animation {
+    display: none !important;
+  }
+  
+  /* Optimizar fuentes */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Tablet: ajustes intermedios solo si es necesario */
+}
+
+/* Prevenir zoom en móvil al hacer doble tap */
+* {
+  touch-action: pan-y pinch-zoom;
+}
+
+button,
+a,
+.icon-button {
+  touch-action: manipulation;
+}
+
+/* Soporte para modo oscuro forzado */
+@media (prefers-color-scheme: dark) {
+  body {
+    color-scheme: dark;
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "manual-interactivo-3d",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Manual de usuario interactivo en formato flipbook 3D para Sistema de Turismo Comunitario",
+  "scripts": {
+    "dev": "node server.js",
+    "dev:next": "next dev --port 3001 --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start --port 3001 --hostname 0.0.0.0",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "split-manual": "node src/utils/splitManual.js"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.1.1",
+    "@react-spring/three": "^9.7.3",
+    "@react-three/drei": "^9.92.0",
+    "@react-three/fiber": "^8.15.0",
+    "clsx": "^2.0.0",
+    "dayjs": "^1.11.10",
+    "framer-motion": "^11.0.0",
+    "lodash": "^4.17.21",
+    "next": "14.2.18",
+    "postprocessing": "^6.34.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "react-pageflip": "^2.0.3",
+    "remark-gfm": "^4.0.0",
+    "three": "^0.160.0",
+    "typescript": "^5.3.3",
+    "use-sound": "^4.0.1",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@types/hast": "^3.0.4",
+    "@types/lodash": "^4.14.202",
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^20.10.6",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
+    "@types/three": "^0.160.0",
+    "@types/unist": "^3.0.3",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "^15.0.0",
+    "postcss": "^8.4.32",
+    "prettier": "^3.1.1",
+    "tailwindcss": "^3.4.0",
+    "ts-node": "^10.9.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
