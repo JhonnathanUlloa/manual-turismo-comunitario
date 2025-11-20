@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { BackgroundFX } from '@/components/BackgroundFX';
-import { Navbar } from '@/components/ui/Navbar';
 import { Sidebar } from '@/components/ui/Sidebar';
 import { UIControls } from '@/components/ui/UIControls';
 import { useManualStore } from '@/store/manualStore';
@@ -108,14 +107,11 @@ export default function ManualPage() {
       {/* Efectos de fondo - Desactivado en móvil para mejor rendimiento */}
       {!isMobile && <BackgroundFX />}
 
-      {/* Navegación superior */}
-      <Navbar />
-
       {/* Sidebar */}
       <Sidebar bookRef={bookRef} />
 
-      {/* Contenedor del libro - responsive */}
-      <div className="relative w-full h-full pt-16 z-10 flex items-center justify-center px-0 sm:px-4">
+      {/* Contenedor del libro - responsive y sin padding top */}
+      <div className="relative w-full h-full z-10 flex items-center justify-center px-0 sm:px-4">
         <div className="w-full h-full flex items-center justify-center">
           {/* @ts-ignore */}
           <HTMLFlipBook
@@ -146,7 +142,7 @@ export default function ManualPage() {
           >
             {manualSections.map((section) => (
               <div key={section.id} className="page bg-white shadow-xl">
-                <TextPage section={section} isMobile={isMobile} />
+                <TextPage section={section} isMobile={isMobile} bookRef={bookRef} />
               </div>
             ))}
           </HTMLFlipBook>
